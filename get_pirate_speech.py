@@ -18,21 +18,27 @@ api_url = 'https://api.funtranslations.com/translate/pirate.json?'
 print ("\nPIRATE SPEAK TRANSLATOR \nWRITTEN BY - SAM EPODOI 💕 \nAPI USED - https://funtranslations.com \n")
 
 
-#User Text Input
-english_text = input("What Text do you want to translate to pirate 😊 ? ")
-
-
 #Execute and if RPH(REQUESTS per Hour) exceeded print error message
 try :
-  url = api_url + urllib.parse.urlencode({'text': english_text})
-  json_data = requests.get(url).json()
-  translated_text = json_data['contents']['translated'] 
 
-  #Print Translated Text
-  if english_text:
-    print ("\n======================================\n")
-    print('Translated Text: ' + translated_text)
-    print ("\n======================================\n")
+  #User Text Input
+  def repeat():
+    english_text = input("What Text do you want to translate to pirate 😊 ? ")
+
+    url = api_url + urllib.parse.urlencode({'text': english_text})
+    json_data = requests.get(url).json()
+    translated_text = json_data['contents']['translated'] 
+
+    #Print Translated Text
+    if english_text:
+      print ("\n======================================\n")
+      print('Translated Text: ' + translated_text)
+      print ("\n======================================\n")
+
+  while True:
+    repeat()
+    
+  
 except Exception as e: 
   print ("\n======================================\n")
   print("Awww snapp😢 \nMaximum number of requests!!! \nPlease try again in an hour")
